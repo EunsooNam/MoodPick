@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPick - AI Music Recommender</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom right, #ffe6e6, #e6f7ff);
+            color: #333;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        .button-container {
+            margin-top: 30px;
+        }
+        button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 12px;
+            background-color: #ffcccc;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff9999;
+        }
+        .results {
+            margin-top: 40px;
+            font-size: 1.1em;
+        }
+        a {
+            display: block;
+            margin: 8px 0;
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>MoodPick 🎵</h1>
+    <p>Choose your mood and get music suggestions tailored to your feelings.</p>
+
+    <div class="button-container">
+        <button onclick="showMusic('happy')">😄 I'm feeling good</button>
+        <button onclick="showMusic('sad')">😔 I'm feeling down</button>
+        <button onclick="showMusic('focus')">🎧 I want to focus</button>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <script>
+        const musicLibrary = {
+            happy: [
+                { title: "Happy - Pharrell Williams", url: "https://www.youtube.com/watch?v=ZbZSe6N_BXs" },
+                { title: "Uptown Funk - Bruno Mars", url: "https://www.youtube.com/watch?v=OPf0YbXqDm0" },
+                { title: "Walking on Sunshine - Katrina & The Waves", url: "https://www.youtube.com/watch?v=iPUmE-tne5U" }
+            ],
+            sad: [
+                { title: "Let Her Go - Passenger", url: "https://www.youtube.com/watch?v=RBumgq5yVrA" },
+                { title: "Someone Like You - Adele", url: "https://www.youtube.com/watch?v=hLQl3WQQoQ0" },
+                { title: "Fix You - Coldplay", url: "https://www.youtube.com/watch?v=k4V3Mo61fJM" }
+            ],
+            focus: [
+                { title: "Lo-fi Beats to Study/Relax", url: "https://www.youtube.com/watch?v=jfKfPfyJRdk" },
+                { title: "Coding Music Mix", url: "https://www.youtube.com/watch?v=QZbuj3RJcjI" },
+                { title: "Deep Focus - Brain.fm", url: "https://www.youtube.com/watch?v=pjQ2pjzLwB0" }
+            ]
+        };
+
+        function showMusic(mood) {
+            const resultDiv = document.getElementById('results');
+            resultDiv.innerHTML = `<h2>Recommended for your mood:</h2>`;
+            const list = musicLibrary[mood];
+            list.forEach(song => {
+                resultDiv.innerHTML += `<a href="${song.url}" target="_blank">${song.title}</a>`;
+            });
+        }
+    </script>
+</body>
+</html>
